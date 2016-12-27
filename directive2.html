@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title>Angularjs</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+<div ng-controller="myCtrl1"> 
+	<div my-form></div>
+</div>
+
+<div ng-controller="myCtrl2"> 
+	<div my-form></div>
+</div>
+<!-- <div my-form></div> -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+ <script src="http://code.angularjs.org/snapshot/angular.min.js"></script>
+ <script type="text/javascript">
+
+
+ var myApplication = angular.module('myApp', []);
+ 	myApplication.controller('myCtrl1', ['$scope', function($scope) {
+ 		$scope.name = 'Welcome Controller!';
+ 		$scope.otherContent = false;
+ 		$scope.email = 'testuser@gmail.com';
+ 		$scope.password = 'demo';
+ 	}]);
+
+ 	myApplication.controller('myCtrl2', ['$scope', function($scope) {
+ 		$scope.name = 'Welcome Controller2!';
+ 		$scope.otherContent = false;
+ 		$scope.email = 'testuser1@gmail.com';
+ 		$scope.password = 'password';
+ 	}]);
+
+ 	myApplication.directive('myForm', function() {
+ 		return {
+ 			restrict: 'ACE',
+ 			templateUrl: 'form.html'
+ 		}
+ 	});
+ </script>
+</body>
+</html>

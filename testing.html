@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+	<ul>
+		<li ng-repeat="obj in data">
+	    	<div>{{obj.question}}</div>
+				<div class="options">
+			    <span ng-repeat="innerObj in obj.choices">
+			      <button class="option" ng-click="btnClick(innerObj, $event)">{{innerObj.ctext}}</button>
+			     </span>
+		    </div>
+	    </li>
+	</ul>
+	{{myString.length>100 && showless == 'false'}} == {{myString.length>100}} == {{testing == 'test'}}
+	<div>{{myString | limitTo: stringLengt}} <a ng-show="myString.length>100 && testing == 'test'" style="color:#ccc;" ng-click="showmore()"> Show More </a> <a ng-show="testing != 'test'" style="color:#ccc;" ng-click="showless()"> Show Less </a> </div>
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+  $scope.data = [
+	 {
+	 question: 'Question1',
+	 choices: [
+	 	{
+	 	ctype: 'btn',
+	 	ccolor: 'red',
+	 	ctext: 'yes'
+	 	},
+	 	{
+	 	ctype: 'btn',
+	 	ccolor: 'black',
+	 	ctext: 'NO'
+	 	},
+	 	{
+	 	ctype: 'btn',
+	 	ccolor: 'green',
+	 	ctext: 'N/A'
+	 	}
+	  ] 
+	 },
+
+	 {question: 'Question2',
+	 choices: [
+	 	{
+	 	ctype: 'btn',
+	 	ccolor: 'red',
+	 	ctext: 'yes'
+	 	},
+	 	{
+	 	ctype: 'btn',
+	 	ccolor: 'black',
+	 	ctext: 'NO'
+	 	},
+	 	{
+	 	ctype: 'btn',
+	 	ccolor: 'green',
+	 	ctext: 'N/A'
+	 	},
+	 	{
+	 	ctype: 'btn',
+	 	ccolor: 'orange',
+	 	ctext: 'N/A1'
+	 	}
+	  ] 
+	 }
+	];
+
+	console.log(angular.isArray($scope.data));
+
+	$scope.btnClick = function (obj, event) {
+		//if() {
+			angular.element(event.currentTarget).parent().parent().children().children().css({background: ''});
+		//}
+		
+		event.currentTarget.style.background = obj.ccolor;
+		
+		// if() {
+		// 	myarry.push();
+		// }
+		//angular
+		var dst = {name:'bujji', role: 'lead'};
+		var scr = {'sno':1}
+
+		 
+
+		//var x = angular.merge(dst, scr);
+		//console.log(x);
+
+		//Angular.lowercase(string);
+	};
+
+$scope.stringLengt = 100;
+$scope.testing = 'test';
+
+$scope.showmore = function () {
+ $scope.stringLengt = $scope.myString.length;
+ $scope.testing = '';
+}
+
+$scope.showless = function () {
+ $scope.stringLengt = 100;
+ $scope.testing = 'test';
+};
+
+$scope.myString = "Returns a function which calls function fn bound to self (self becomes the this for fn). You can supply optional args that are prebound to the function. This feature is also known as partial application, as distinguished from function currying. eturns a function which calls function fn bound to self (self becomes the this for fn). You can supply optional args that are prebound to the function. This feature is also known as partial application, as distinguished from function currying."
+
+
+});
+</script>
+</body>
+</html>
